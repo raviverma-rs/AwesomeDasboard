@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AwesomeDasboard.MainPage"
+             xmlns:model="clr-namespace:AwesomeDasboard.Models"
+             xmlns:viewmodel="clr-namespace:AwesomeDasboard.ViewModel"
+             x:DataType="viewmodel:MainViewModel"
+             Title="Awesome Dashboard">
+
+    <ScrollView>
+        <Grid RowDefinitions="160, Auto, Auto, Auto, Auto">
+
+            <Grid Grid.Row="0" ColumnDefinitions="*,Auto,*"
+          RowDefinitions="Auto">
+                <Frame BackgroundColor="#329866"
+                 Grid.ColumnSpan="3"
+                   Padding="10"
+                 CornerRadius="0"
+                 BorderColor="#329866"
+                 HorizontalOptions="FillAndExpand">
+
+
+                    <Grid>
+                        <CollectionView ItemsLayout="HorizontalList">
+                            <CollectionView.ItemsSource>
+                                <x:Array Type="{x:Type model:ArticleModel}">
+                                    <model:ArticleModel Index="1" Image="slide_1.png" Title="articles" />
+                                    <model:ArticleModel Index="2" Image="slide_2.png" Title="courses" />
+                                    <model:ArticleModel Index="3" Image="slide_8.png" Title="subjects" />
+                                    <model:ArticleModel Index="4" Image="slide_4.png" Title="teachers" />
+                                    <model:ArticleModel Index="4" Image="slide_5.png" Title="videos" />
+                                    <model:ArticleModel Index="4" Image="slide_6.png" Title="sessions" />
+                                    <model:ArticleModel Index="4" Image="slide_7.png" Title="technologies" />
+                                    <model:ArticleModel Index="4" Image="slide_8.png" Title="high rated" />
+                                </x:Array>
+                            </CollectionView.ItemsSource>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:ArticleModel">
+
+                                    <Grid RowDefinitions="88, Auto" ColumnDefinitions="90">
+                                        <Border Stroke="#297a52"
+                                StrokeThickness="4"
+                                StrokeShape="RoundRectangle 80"
+                                WidthRequest="80"
+                                HeightRequest="80"
+                                Background="#FFFF"
+                                HorizontalOptions="Center">
+
+                                            <Frame
+                                                Padding="0"
+                                                HasShadow="True"
+                                                CornerRadius="60"
+                                                WidthRequest="60" 
+                                                HeightRequest="60">
+                                                <Image Aspect="AspectFill" 
+                                                    HeightRequest="60"
+                                                    WidthRequest="60"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center" 
+                                                    Source="{Binding Image}"></Image>
+                                            </Frame>
+                                        </Border>
+
+                                        <Label HorizontalOptions="Center" Grid.Row="1" TextColor="White" FontAttributes="Bold" Text="{Binding Title}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                        </CollectionView>
+                    </Grid>
+
+                </Frame>
+
+            </Grid>
+
+            <Grid Grid.Row="1" Padding="10">
+                <VerticalStackLayout>
+                    <Label FontSize="12" Text="Choose by" FontAttributes="Bold" TextColor="{StaticResource Gray600}"></Label>
+                    <Label FontSize="20" Text="Categories" FontAttributes="Bold" TextColor="{StaticResource Gray600}"></Label>
+
+                    <Grid Margin="0,6,0,0">
+
+                        <CollectionView ItemsLayout="HorizontalList">
+                            <CollectionView.ItemsSource>
+                                <x:Array Type="{x:Type model:ArticleModel}">
+                                    <model:ArticleModel Index="1" Image="slide_1.png" Title="Information Technologies" SubTitle="131 Cources" Areas="16 areas" Color1="#329866" Color2="#297a52" />
+                                    <model:ArticleModel Index="2" Image="slide_2.png" Title="Languages" SubTitle="57 cources" Areas="12 areas" />
+                                    <model:ArticleModel Index="3" Image="slide_8.png" Title="Professional Cources" SubTitle="57 cources" Areas="12 areas" />
+                                    <model:ArticleModel Index="4" Image="slide_4.png" Title="Health" SubTitle="57 cources" Areas="12 areas" />
+                                    <model:ArticleModel Index="4" Image="slide_5.png" Title="Design" SubTitle="57 cources" Areas="12 areas" />
+                                    <model:ArticleModel Index="4" Image="slide_6.png" Title="Art" SubTitle="57 cources" Areas="12 areas" />
+                                </x:Array>
+                            </CollectionView.ItemsSource>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:ArticleModel">
+
+                                    <Grid>
+
+                                        <Frame
+                                        HasShadow="True"
+                                        Margin="6"
+                                        WidthRequest="220" 
+                                        CornerRadius="10"
+                                        Padding="1"
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="Start"
+                                        BackgroundColor="#329866"
+                                        HeightRequest="120">
+
+                                            <Grid>
+                                                <Border Grid.Column="0"
+                                            Grid.RowSpan="2" 
+                                            Stroke="#FFFF"
+                                            StrokeThickness="0"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Start"
+                                            StrokeShape="RoundRectangle 10,0,0,120"
+                                            HeightRequest="100"
+                                            WidthRequest="160"
+                                            Background="#297a52">
+
+                                                </Border>
+                                                <VerticalStackLayout Padding="10">
+                                                    <Label Grid.Row="1" FontSize="16" TextColor="White" FontAttributes="Bold" Text="{Binding Title}"/>
+                                                    <Label Grid.Row="1" FontSize="16" TextColor="White" FontAttributes="Bold" Text="{Binding SubTitle}"/>
+                                                    <Label Grid.Row="1" FontSize="16" TextColor="White" FontAttributes="Bold" Text="{Binding Areas}"/>
+                                                </VerticalStackLayout>
+
+                                                <Grid Padding="26">
+                                                    <Image WidthRequest="40" HorizontalOptions="End" VerticalOptions="End" Source="transparent.png" />
+                                                </Grid>
+                                            </Grid>
+                                        </Frame>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                        </CollectionView>
+                    </Grid>
+                </VerticalStackLayout>
+            </Grid>
+
+            <Grid Grid.Row="2" Padding="10">
+                <VerticalStackLayout>
+                    <Label FontSize="12" Text="Choose by" FontAttributes="Bold" TextColor="{StaticResource Gray600}"></Label>
+                    <Label FontSize="20" Text="Best Course" FontAttributes="Bold" TextColor="{StaticResource Gray600}"></Label>
+
+                    <Grid Margin="0,6,0,0">
+                        <CollectionView ItemsLayout="HorizontalList">
+                            <CollectionView.ItemsSource>
+                                <x:Array Type="{x:Type model:ArticleModel}">
+                                    <model:ArticleModel Index="1" Image="angular.png" Title="Angular for beginners by"
+                                                        SubTitle="Sample.academy" Duration="05h21m"/>
+                                    
+                                    <model:ArticleModel Index="2" Image="javascript.jpg" Title="Javascript for beginners by"
+                                                        SubTitle="Sample.academy" Duration="02h21m"/>
+
+                                    <model:ArticleModel Index="2" Image="maui.png" Title="MAUI Developement for beginners by"
+                                                        SubTitle="Sample.academy" Duration="02h21m"/>
+                                    
+                                    <model:ArticleModel Index="2" Image="jquery.png" Title="jquery Developement for beginners by"
+                                                        SubTitle="Sample.academy" Duration="02h21m"/>
+                                </x:Array>
+                            </CollectionView.ItemsSource>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:ArticleModel">
+
+                                        <Frame
+                                        HasShadow="True"
+                                        Margin="6"
+                                        CornerRadius="10"
+                                        Padding="10"
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="Start"
+                                        BackgroundColor="#297a52"
+                                        WidthRequest="200" 
+                                        HeightRequest="260">
+
+                                            <Grid RowDefinitions="100, Auto">
+
+                                                <Frame VerticalOptions="Start" CornerRadius="10" Padding="0" HeightRequest="100">
+                                                    <Image Aspect="AspectFill" Source="{Binding Image}" />
+                                                </Frame>
+
+
+                                                <VerticalStackLayout Spacing="4" Grid.Row="1" Padding="0,10,0,0">
+                                                    <Label Grid.Row="1" FontSize="16" TextColor="White" Text="{Binding Title}"/>
+                                                    <Label Grid.Row="1" FontSize="16" TextColor="White" FontAttributes="Bold" Text="{Binding SubTitle}"/>
+                                                    <Label Grid.Row="1" FontSize="16" TextColor="White" FontAttributes="Bold" Text="{Binding Duration}"/>
+                                                    <Image HorizontalOptions="Start" Aspect="AspectFill" WidthRequest="100" Source="start_image.png" />
+                                                </VerticalStackLayout>
+
+                                            </Grid>
+                                        </Frame>
+                                    
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                        </CollectionView>
+                    </Grid>
+                </VerticalStackLayout>
+            </Grid>
+
+            <Grid Grid.Row="3" Padding="10">
+                <VerticalStackLayout>
+                    <Label FontSize="12" Text="Choose by" FontAttributes="Bold" TextColor="{StaticResource Gray600}"></Label>
+                    <Label FontSize="20" Text="Subjects" FontAttributes="Bold" TextColor="{StaticResource Gray600}"></Label>
+
+                    <Grid Margin="0,12,0,0">
+
+                        <CollectionView ItemsLayout="HorizontalList">
+                            <CollectionView.ItemsSource>
+                                <x:Array Type="{x:Type model:ArticleModel}">
+                                    <model:ArticleModel Index="1" Image="slide_1.png" Title="AWS" />
+                                    <model:ArticleModel Index="2" Image="slide_2.png" Title="Devops" />
+                                    <model:ArticleModel Index="3" Image="slide_8.png" Title="Github" />
+                                    <model:ArticleModel Index="4" Image="slide_4.png" Title="Azure" />
+                                    <model:ArticleModel Index="4" Image="slide_5.png" Title="English" />
+                                    <model:ArticleModel Index="4" Image="slide_6.png" Title="Math" />
+                                </x:Array>
+                            </CollectionView.ItemsSource>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:ArticleModel">
+                                    <Grid>
+                                        <Border 
+                                                HeightRequest="60"
+                                                StrokeShape="RoundRectangle 40,0,0,40"
+                                                Stroke="#329866"
+                                                Padding="18, 10"
+                                                Margin="4,0"
+                                                StrokeThickness="3">
+                                            <HorizontalStackLayout Spacing="10">
+
+                                                <Image Source="transparent.png"></Image>
+                                                <Label TextColor="Gray" FontAttributes="Bold" FontSize="26" Text="{Binding Title}"></Label>
+
+                                            </HorizontalStackLayout>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                        </CollectionView>
+                    </Grid>
+                </VerticalStackLayout>
+            </Grid>
+
+            <Grid Grid.Row="4">
+                <VerticalStackLayout>
+                    <Grid Padding="10">
+                        <VerticalStackLayout>
+                            <Label FontSize="12" Text="Choose by" FontAttributes="Bold" TextColor="{StaticResource Gray600}"></Label>
+                            <Label FontSize="20" Text="Teachers" FontAttributes="Bold" TextColor="{StaticResource Gray600}"></Label>
+                        </VerticalStackLayout>
+                    </Grid>
+                    <Grid Margin="0,6,0,0"
+                            BackgroundColor="#329866" ColumnDefinitions="*,Auto,*" RowDefinitions="Auto">
+                        <Frame
+                            Grid.ColumnSpan="3"
+                            Padding="8"
+                            CornerRadius="0"
+                            BackgroundColor="#329866"
+                            BorderColor="Transparent"
+                            HorizontalOptions="FillAndExpand">
+
+                                <CollectionView ItemsLayout="HorizontalList">
+                                    <CollectionView.ItemsSource>
+                                        <x:Array Type="{x:Type model:ArticleModel}">
+                                            <model:ArticleModel Index="1" Image="teacher_1.png" Title="Wade" />
+                                            <model:ArticleModel Index="2" Image="teacher_2.png" Title="Jack" />
+                                            <model:ArticleModel Index="3" Image="teacher_3.png" Title="Harry" />
+                                            <model:ArticleModel Index="4" Image="teacher_4.png" Title="Jacob" />
+                                            <model:ArticleModel Index="5" Image="teacher_5.png" Title="Charlie" />
+                                            <model:ArticleModel Index="6" Image="teacher_6.png" Title="Thomas" />
+                                        </x:Array>
+                                    </CollectionView.ItemsSource>
+
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="model:ArticleModel">
+
+                                            <Grid RowDefinitions="88, Auto" ColumnDefinitions="90">
+
+                                                <Border Stroke="#297a52"
+                                StrokeThickness="4"
+                                StrokeShape="RoundRectangle 80"
+                                HeightRequest="80"
+                                WidthRequest="80"
+                                Background="#FFFF"
+                                HorizontalOptions="Center">
+                                                    <Frame
+                                                Padding="0"
+                                                HasShadow="True"
+                                                CornerRadius="60"
+                                                WidthRequest="60" 
+                                                HeightRequest="60">
+                                                        <Image Aspect="AspectFill" 
+                                                    HeightRequest="60"
+                                                    WidthRequest="60"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center" 
+                                                    Source="{Binding Image}"></Image>
+                                                    </Frame>
+
+                                                </Border>
+
+                                                <Label HorizontalOptions="Center" Grid.Row="1" TextColor="White" FontAttributes="Bold" Text="{Binding Title}"/>
+                                            </Grid>
+
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+
+                                </CollectionView>
+                            
+                        </Frame>
+                    </Grid>
+                </VerticalStackLayout>
+            </Grid>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
